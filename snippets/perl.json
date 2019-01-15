@@ -75,15 +75,26 @@
             "}"
         ],
         "prefix": "given",
-        "description": "Code snippet for an given statement."
-	},
-	"while": {
+        "description": "Code snippet for a given statement."
+    },
+    "while": {
         "body": ["while (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
         "prefix": "while",
-        "description": "Code snippet for an while loop."
+        "description": "Code snippet for a while loop."
+    },
+    "while/continue": {
+        "body": ["while (${1:EXPR}) {",
+            "\t${2:BLOCK}",
+            "}",
+            "continue (${1:EXPR}) {",
+            "\t${2:BLOCK}",
+            "}"
+        ],
+        "prefix": "while/continue",
+        "description": "Code snippet for a while loop with continue."
     },
     "until": {
         "body": ["until (${1:EXPR}) {",
@@ -92,5 +103,24 @@
         ],
         "prefix": "until",
         "description": "Code snippet for an until loop."
+    },
+    "until/continue": {
+        "body": ["until (${1:EXPR}) {",
+            "\t${2:BLOCK}",
+            "}",
+            "continue (${1:EXPR}) {",
+            "\t${2:BLOCK}",
+            "}"
+        ],
+        "prefix": "until/continue",
+        "description": "Code snippet for a until loop with continue."
+    },
+    "continue": {
+        "body": ["continue (${1:EXPR}) {",
+            "\t${2:BLOCK}",
+            "}"
+        ],
+        "prefix": "continue",
+        "description": "Code snippet for a continue statement with block."
     }
 }
