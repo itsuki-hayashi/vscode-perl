@@ -68,5 +68,13 @@
         ],
         "prefix": "elsif",
         "description": "Code snippet for an elsif statement."
+    },
+    "given": {
+        "body": ["given (${1:condition}) {",
+            "\t${2:block}",
+            "}"
+        ],
+        "prefix": "given",
+        "description": "Code snippet for an given statement."
     }
 }
