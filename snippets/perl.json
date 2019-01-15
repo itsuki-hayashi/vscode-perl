@@ -89,8 +89,8 @@
         "body": ["while (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}",
-            "continue (${1:EXPR}) {",
-            "\t${2:BLOCK}",
+            "continue {",
+            "\t${3:BLOCK}",
             "}"
         ],
         "prefix": "while/continue",
@@ -108,19 +108,46 @@
         "body": ["until (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}",
-            "continue (${1:EXPR}) {",
-            "\t${2:BLOCK}",
+            "continue {",
+            "\t${3:BLOCK}",
             "}"
         ],
         "prefix": "until/continue",
         "description": "Code snippet for a until loop with continue."
     },
     "continue": {
-        "body": ["continue (${1:EXPR}) {",
-            "\t${2:BLOCK}",
+        "body": ["continue {",
+            "\t${1:BLOCK}",
             "}"
         ],
         "prefix": "continue",
         "description": "Code snippet for a continue statement with block."
+    },
+    "for": {
+        "body": ["for (${1:EXPR}; ${2:EXPR}; ${3:EXPR}) {",
+            "\t${4:BLOCK}",
+            "}"
+        ],
+        "prefix": "for",
+        "description": "Code snippet for a for loop."
+    },
+    "foreach": {
+        "body": ["for ${1:VAR} (${2:LIST}) {",
+            "\t${3:BLOCK}",
+            "}"
+        ],
+        "prefix": "foreach",
+        "description": "Code snippet for a foreach loop."
+    },
+    "foreach/continue": {
+        "body": ["for ${1:VAR} (${2:LIST}) {",
+            "\t${3:BLOCK}",
+            "}",
+            "continue {",
+            "\t${4:BLOCK}",
+            "}"
+        ],
+        "prefix": "foreach/continue",
+        "description": "Code snippet for a foreach loop with continue."
     }
 }
