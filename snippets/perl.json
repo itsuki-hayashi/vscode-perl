@@ -1,0 +1,18 @@
+{
+    "init": {
+        "body": ["#!/usr/bin/env perl",
+            "use 5.028;",
+            "use strict;",
+            "use warnings;",
+
+            "",
+            "package ${TM_FILENAME_BASE:Main} 0.001 {",
+            "\tuse Carp 'croak';",
+            "\tsay 'Hello world' or croak;",
+            "}",
+            ""
+        ],
+        "prefix": "init",
+        "description": "Initialize perl file with a moderm template."
+    }
+}
