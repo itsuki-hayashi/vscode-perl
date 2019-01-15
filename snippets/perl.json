@@ -13,6 +13,60 @@
             ""
         ],
         "prefix": "init",
-        "description": "Initialize perl file with a moderm template."
+        "description": "Code snippet for a new Perl file."
+    },
+    "if": {
+        "body": ["if (${1:condition}) {",
+            "\t${2:block}",
+            "}"
+        ],
+        "prefix": "if",
+        "description": "Code snippet for an if statement."
+    },
+    "if/else": {
+        "body": ["if (${1:condition}) {",
+            "\t${2:block}",
+            "}",
+            "else {",
+            "\t${3:block}",
+            "}"
+        ],
+        "prefix": "if/else",
+        "description": "Code snippet for an if statement with else."
+    },
+    "unless": {
+        "body": ["unless (${1:condition}) {",
+            "\t${2:block}",
+            "}"
+        ],
+        "prefix": "unless",
+        "description": "Code snippet for an unless statement."
+    },
+    "unless/else": {
+        "body": ["unless (${1:condition}) {",
+            "\t${2:block}",
+            "}",
+            "else {",
+            "\t${3:block}",
+            "}"
+        ],
+        "prefix": "unless/else",
+        "description": "Code snippet for an unless statement with else."
+    },
+    "else": {
+        "body": ["else (${1:condition}) {",
+            "\t${2:block}",
+            "}"
+        ],
+        "prefix": "else",
+        "description": "Code snippet for an else statement."
+    },
+    "elsif": {
+        "body": ["elsif (${1:condition}) {",
+            "\t${2:block}",
+            "}"
+        ],
+        "prefix": "elsif",
+        "description": "Code snippet for an elsif statement."
     }
 }
