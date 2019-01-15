@@ -16,65 +16,81 @@
         "description": "Code snippet for a new Perl file."
     },
     "if": {
-        "body": ["if (${1:condition}) {",
-            "\t${2:block}",
+        "body": ["if (${1:EXPR}) {",
+            "\t${2:BLOCK}",
             "}"
         ],
         "prefix": "if",
         "description": "Code snippet for an if statement."
     },
     "if/else": {
-        "body": ["if (${1:condition}) {",
-            "\t${2:block}",
+        "body": ["if (${1:EXPR}) {",
+            "\t${2:BLOCK}",
             "}",
             "else {",
-            "\t${3:block}",
+            "\t${3:BLOCK}",
             "}"
         ],
         "prefix": "if/else",
         "description": "Code snippet for an if statement with else."
     },
     "unless": {
-        "body": ["unless (${1:condition}) {",
-            "\t${2:block}",
+        "body": ["unless (${1:EXPR}) {",
+            "\t${2:BLOCK}",
             "}"
         ],
         "prefix": "unless",
         "description": "Code snippet for an unless statement."
     },
     "unless/else": {
-        "body": ["unless (${1:condition}) {",
-            "\t${2:block}",
+        "body": ["unless (${1:EXPR}) {",
+            "\t${2:BLOCK}",
             "}",
             "else {",
-            "\t${3:block}",
+            "\t${3:BLOCK}",
             "}"
         ],
         "prefix": "unless/else",
         "description": "Code snippet for an unless statement with else."
     },
     "else": {
-        "body": ["else (${1:condition}) {",
-            "\t${2:block}",
+        "body": ["else (${1:EXPR}) {",
+            "\t${2:BLOCK}",
             "}"
         ],
         "prefix": "else",
         "description": "Code snippet for an else statement."
     },
     "elsif": {
-        "body": ["elsif (${1:condition}) {",
-            "\t${2:block}",
+        "body": ["elsif (${1:EXPR}) {",
+            "\t${2:BLOCK}",
             "}"
         ],
         "prefix": "elsif",
         "description": "Code snippet for an elsif statement."
     },
     "given": {
-        "body": ["given (${1:condition}) {",
-            "\t${2:block}",
+        "body": ["given (${1:EXPR}) {",
+            "\t${2:BLOCK}",
             "}"
         ],
         "prefix": "given",
         "description": "Code snippet for an given statement."
+	},
+	"while": {
+        "body": ["while (${1:EXPR}) {",
+            "\t${2:BLOCK}",
+            "}"
+        ],
+        "prefix": "while",
+        "description": "Code snippet for an while loop."
+    },
+    "until": {
+        "body": ["until (${1:EXPR}) {",
+            "\t${2:BLOCK}",
+            "}"
+        ],
+        "prefix": "until",
+        "description": "Code snippet for an until loop."
     }
 }
