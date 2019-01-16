@@ -2,7 +2,7 @@
     "init": {
         "body": ["#!/usr/bin/env perl",
             "use 5.028;",
-            "use strict;",
+            "use utf8;",
             "use warnings;",
 
             "",
