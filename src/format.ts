@@ -12,10 +12,6 @@ export class PerlFormattingProvider implements DocumentRangeFormattingEditProvid
         options: FormattingOptions,
         token: CancellationToken,
     ): Promise<TextEdit[]> {
-        // if perltidy is not defined, then skip the formatting
-        if (!workspace.getConfiguration("perl").get("perltidy")) {
-            return [];
-        }
 
         return new Promise<TextEdit[]>((resolve, reject) => {
             if (range.start.line !== range.end.line) {
@@ -27,13 +23,8 @@ export class PerlFormattingProvider implements DocumentRangeFormattingEditProvid
 
             const config = workspace.getConfiguration("perl");
 
-            let executable = config.get("perltidy", "perltidy");
-            let args = config.get("perltidyArgs", ["-q"]);
-            const container = config.get("perltidyContainer", "");
-            if (container !== "") {
-                args = ["exec", "-i", container, executable].concat(args);
-                executable = "docker";
-            }
+            const executable = config.get("perltidy", "perltidy");
+            const args = config.get("perltidyArgs", ["-q"]);
 
             const text = document.getText(range);
             const child = spawn(executable, args);
