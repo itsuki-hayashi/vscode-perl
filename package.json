@@ -14,7 +14,7 @@
 	"activationEvents": [
 		"onLanguage:perl"
 	],
-	"main": "./out/extension.js",
+	"main": "./out/extension",
 	"contributes": {
 		"configuration": {
 			"type": "object",
