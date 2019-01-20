@@ -6,15 +6,18 @@
 		"lib": [
 			"es6"
 		],
-		"sourceMap": true,
+		"sourceMap": false,
 		"rootDir": "src",
 		/* Strict Type-Checking Option */
-		"strict": true,
 		/* enable all strict type-checking options */
+		"strict": true,
 		/* Additional Checks */
-		"noUnusedLocals": true /* Report errors on unused locals. */
-		// "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
-		// "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
+		/* Report errors on unused locals. */
+		"noUnusedLocals": true,
+		/* Report error when not all code paths in function return a value. */
+		"noImplicitReturns": true,
+		/* Report errors for fallthrough cases in switch statement. */
+		"noFallthroughCasesInSwitch": true,
 		// "noUnusedParameters": true,  /* Report errors on unused parameters. */
 	},
 	"exclude": [
