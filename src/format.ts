@@ -1,18 +1,15 @@
 // Referenced https://github.com/henriiik/vscode-perl
 import { spawn } from "child_process";
 import {
-    CancellationToken, DocumentRangeFormattingEditProvider,
-    FormattingOptions, Range, TextDocument, TextEdit, workspace,
+    DocumentRangeFormattingEditProvider,
+    Range, TextDocument, TextEdit, workspace,
 } from "vscode";
 
 export class PerlFormattingProvider implements DocumentRangeFormattingEditProvider {
     public async provideDocumentRangeFormattingEdits(
         document: TextDocument,
         range: Range,
-        options: FormattingOptions,
-        token: CancellationToken,
     ): Promise<TextEdit[]> {
-
         return new Promise<TextEdit[]>((resolve, reject) => {
             if (range.start.line !== range.end.line) {
                 range = range.with(

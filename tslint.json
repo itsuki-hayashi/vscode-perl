@@ -11,7 +11,8 @@
 			"always"
 		],
 		"triple-equals": true,
-		"no-console": false
+		"no-console": false,
+		"quotemark": true
 	},
-	"defaultSeverity": "warning"
+	"defaultSeverity": "error"
 }

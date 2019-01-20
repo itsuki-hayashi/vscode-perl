@@ -1,19 +1,12 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from "vscode";
+import { DocumentFilter, ExtensionContext, languages } from "vscode";
 import { PerlFormattingProvider } from "./format";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export async function activate(context: vscode.ExtensionContext) {
-
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "simple-perl" is now active!');
-
+export async function activate(context: ExtensionContext) {
+    console.log("simple-perl has been activated.");
+    const selector: DocumentFilter = { language: "perl", scheme: "file" };
     const formatProvider = new PerlFormattingProvider();
-    context.subscriptions.push(
-        vscode.languages.registerDocumentRangeFormattingEditProvider(
-            { language: "perl", scheme: "file" },
-            formatProvider));
-
+    context.subscriptions.push(languages.registerDocumentRangeFormattingEditProvider(selector, formatProvider));
 }
