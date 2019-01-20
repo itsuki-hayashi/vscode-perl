@@ -27,6 +27,7 @@ export class PerlFormattingProvider implements DocumentRangeFormattingEditProvid
             const args = config.get("perltidyArgs", ["-q"]);
 
             const text = document.getText(range);
+            console.log(`spawning process ${executable} ${args}`);
             const child = spawn(executable, args);
             child.stdin.write(text);
             child.stdin.end();
