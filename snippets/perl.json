@@ -1,6 +1,7 @@
 {
     "init": {
-        "body": ["#!/usr/bin/env perl",
+        "body": [
+            "#!/usr/bin/env perl",
             "use 5.028;",
             "use utf8;",
             "use warnings;",
@@ -16,7 +17,8 @@
         "description": "Code snippet for a new Perl file."
     },
     "if": {
-        "body": ["if (${1:EXPR}) {",
+        "body": [
+            "if (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
@@ -24,7 +26,8 @@
         "description": "Code snippet for an if statement."
     },
     "if/else": {
-        "body": ["if (${1:EXPR}) {",
+        "body": [
+            "if (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}",
             "else {",
@@ -35,7 +38,8 @@
         "description": "Code snippet for an if statement with else."
     },
     "unless": {
-        "body": ["unless (${1:EXPR}) {",
+        "body": [
+            "unless (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
@@ -43,7 +47,8 @@
         "description": "Code snippet for an unless statement."
     },
     "unless/else": {
-        "body": ["unless (${1:EXPR}) {",
+        "body": [
+            "unless (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}",
             "else {",
@@ -54,7 +59,8 @@
         "description": "Code snippet for an unless statement with else."
     },
     "else": {
-        "body": ["else (${1:EXPR}) {",
+        "body": [
+            "else (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
@@ -62,7 +68,8 @@
         "description": "Code snippet for an else statement."
     },
     "elsif": {
-        "body": ["elsif (${1:EXPR}) {",
+        "body": [
+            "elsif (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
@@ -70,7 +77,8 @@
         "description": "Code snippet for an elsif statement."
     },
     "given": {
-        "body": ["given (${1:EXPR}) {",
+        "body": [
+            "given (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
@@ -78,7 +86,8 @@
         "description": "Code snippet for a given statement."
     },
     "while": {
-        "body": ["while (${1:EXPR}) {",
+        "body": [
+            "while (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
@@ -86,7 +95,8 @@
         "description": "Code snippet for a while loop."
     },
     "while/continue": {
-        "body": ["while (${1:EXPR}) {",
+        "body": [
+            "while (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}",
             "continue {",
@@ -97,7 +107,8 @@
         "description": "Code snippet for a while loop with continue."
     },
     "until": {
-        "body": ["until (${1:EXPR}) {",
+        "body": [
+            "until (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}"
         ],
@@ -105,7 +116,8 @@
         "description": "Code snippet for an until loop."
     },
     "until/continue": {
-        "body": ["until (${1:EXPR}) {",
+        "body": [
+            "until (${1:EXPR}) {",
             "\t${2:BLOCK}",
             "}",
             "continue {",
@@ -116,7 +128,8 @@
         "description": "Code snippet for a until loop with continue."
     },
     "continue": {
-        "body": ["continue {",
+        "body": [
+            "continue {",
             "\t${1:BLOCK}",
             "}"
         ],
@@ -124,7 +137,8 @@
         "description": "Code snippet for a continue statement with block."
     },
     "for": {
-        "body": ["for (${1:EXPR}; ${2:EXPR}; ${3:EXPR}) {",
+        "body": [
+            "for (${1:EXPR}; ${2:EXPR}; ${3:EXPR}) {",
             "\t${4:BLOCK}",
             "}"
         ],
@@ -132,7 +146,8 @@
         "description": "Code snippet for a for loop."
     },
     "foreach": {
-        "body": ["for ${1:VAR} (${2:LIST}) {",
+        "body": [
+            "for ${1:VAR} (${2:LIST}) {",
             "\t${3:BLOCK}",
             "}"
         ],
@@ -140,7 +155,8 @@
         "description": "Code snippet for a foreach loop."
     },
     "foreach/continue": {
-        "body": ["for ${1:VAR} (${2:LIST}) {",
+        "body": [
+            "for ${1:VAR} (${2:LIST}) {",
             "\t${3:BLOCK}",
             "}",
             "continue {",
@@ -149,5 +165,32 @@
         ],
         "prefix": "foreach/continue",
         "description": "Code snippet for a foreach loop with continue."
+    },
+    "do/while": {
+        "body": [
+            "do {",
+            "\t${1:BLOCK}",
+            "} while ${2:EXPR};"
+        ],
+        "prefix": "do/while",
+        "description": "Code snippet for a do/while loop."
+    },
+    "do/until": {
+        "body": [
+            "do {",
+            "\t${1:BLOCK}",
+            "} until ${2:EXPR};"
+        ],
+        "prefix": "do/until",
+        "description": "Code snippet for a do/until loop."
+    },
+    "sub": {
+        "body": [
+            "sub ${1:NAME} {",
+            "\t${2:BLOCK}",
+            "}"
+        ],
+        "prefix": "sub",
+        "description": "Code snippet for a subroutine definition."
     }
 }
