@@ -42,11 +42,13 @@ export class PerlFormattingProvider implements DocumentRangeFormattingEditProvid
             });
 
             child.on("close", (code) => {
+                const stderr = stderrChunks.join("");
+                const stdout = stdoutChunks.join("");
                 if (stderrChunks.length > 0 || code !== 0) {
-                    const message = stderrChunks.join("").concat(stdoutChunks.join("")).trim();
-                    reject(`Could not format, code: ${code}, error: ${message}`);
+                    const errorMessage = stderr.concat(stdout).trim();
+                    reject(`Could not format, code: ${code}, error: ${errorMessage}`);
                 } else {
-                    resolve([new TextEdit(range, stdoutChunks.join(""))]) ;
+                    resolve([new TextEdit(range, stdout)]) ;
                 }
             });
         }).catch((reason) => {
