@@ -16,6 +16,12 @@
 	],
 	"main": "./out/extension",
 	"contributes": {
+		"snippets": [
+            {
+                "language": "perl",
+                "path": "./snippets/perl.json"
+            }
+        ],
 		"configuration": {
 			"type": "object",
 			"title": "Simple Perl configuration",
