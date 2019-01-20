@@ -1,19 +1,40 @@
 {
 	"name": "simple-perl",
 	"displayName": "Simple Perl",
-	"description": "Simple Perl extension for Visual Studio Code.",
+	"description": "Simple Perl extension supports perltidy and perlcritic.",
 	"version": "0.0.1",
+	"license": "GPL-3.0",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
 	"categories": [
-		"Other"
+		"Programming Languages"
 	],
+	"publisher": "edsgerlin",
 	"activationEvents": [
 		"onLanguage:perl"
 	],
 	"main": "./out/extension.js",
-	"contributes": {},
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Simple Perl configuration",
+			"properties": {
+				"perl.perltidy": {
+					"type": "string",
+					"default": "perltidy",
+					"description": "The name or path to the perltidy executable that will be used when formatting code."
+				},
+				"perl.perltidyArgs": {
+					"type": "array",
+					"default": [
+						"-q"
+					],
+					"description": "Arguments to perltidy as an array of strings, each element an argument including the leading dash."
+				}
+			}
+		}
+	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
@@ -22,10 +43,10 @@
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"typescript": "~3.2.2",
+		"typescript": "~3.2.4",
 		"vscode": "~1.1.26",
 		"tslint": "~5.12.1",
-		"@types/node": "~8.10.39",
-		"@types/mocha": "~2.2.48"
+		"@types/node": "~10.12.18",
+		"@types/mocha": "~5.2.5"
 	}
 }
