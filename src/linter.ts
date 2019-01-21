@@ -51,7 +51,7 @@ export default class PerlLinterProvider {
         }
         const decodedChunks: Buffer[] = [];
         const tempfilepath =
-            this.getTemporaryPath() +
+            tmpdir() +
             sep +
             basename(textDocument.fileName) +
             ".lint";
@@ -180,14 +180,6 @@ export default class PerlLinterProvider {
             policies.push(policy);
         });
         return policies.join(" ");
-    }
-
-    private getTemporaryPath() {
-        const configuration = workspace.getConfiguration("perl-toolbox");
-        if (configuration.temporaryPath === null) {
-            return tmpdir();
-        }
-        return configuration.temporaryPath;
     }
 
     private useProfile(): string {
