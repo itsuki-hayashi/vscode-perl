@@ -16,22 +16,20 @@
 	],
 	"main": "./out/extension",
 	"contributes": {
-		"snippets": [
-            {
-                "language": "perl",
-                "path": "./snippets/perl.json"
-            }
-        ],
+		"snippets": [{
+			"language": "perl",
+			"path": "./snippets/perl.json"
+		}],
 		"configuration": {
 			"type": "object",
 			"title": "Simple Perl configuration",
 			"properties": {
-				"perl.perltidy": {
+				"simple-perl.perltidy": {
 					"type": "string",
 					"default": "perltidy",
 					"description": "The name or path to the perltidy executable that will be used when formatting code."
 				},
-				"perl.perltidyArgs": {
+				"shimple-perl.perltidyArgs": {
 					"type": "array",
 					"default": [
 						"-q"

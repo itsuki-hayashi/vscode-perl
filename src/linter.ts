@@ -15,7 +15,7 @@ export default class PerlLinterProvider {
 
     public constructor(subscriptions: Disposable[]) {
         this.diagnosticCollection = languages.createDiagnosticCollection();
-        this.configuration = workspace.getConfiguration("perl-toolbox.lint");
+        this.configuration = workspace.getConfiguration("simple-perl.lint");
 
         workspace.onDidCloseTextDocument(
             (textDocument) => {
@@ -44,9 +44,6 @@ export default class PerlLinterProvider {
 
     private lint(textDocument: TextDocument) {
         if (textDocument.languageId !== "perl") {
-            return;
-        }
-        if (!this.configuration.enabled) {
             return;
         }
         const decodedChunks: Buffer[] = [];

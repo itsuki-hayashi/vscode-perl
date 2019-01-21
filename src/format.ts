@@ -18,7 +18,7 @@ export class PerlFormattingProvider implements DocumentRangeFormattingEditProvid
                 );
             }
 
-            const config = workspace.getConfiguration("perl");
+            const config = workspace.getConfiguration("simple-perl");
             const executable = config.get("perltidy", "perltidy");
             const args = config.get("perltidyArgs", ["-q"]);
             const text = document.getText(range);
@@ -27,7 +27,7 @@ export class PerlFormattingProvider implements DocumentRangeFormattingEditProvid
             child.stdin.write(text);
             child.stdin.end();
 
-            const stdoutChunks: string[]  = [];
+            const stdoutChunks: string[] = [];
             child.stdout.on("data", (chunk: Buffer) => {
                 stdoutChunks.push(chunk.toString());
             });
@@ -48,7 +48,7 @@ export class PerlFormattingProvider implements DocumentRangeFormattingEditProvid
                     const errorMessage = stderr.concat(stdout).trim();
                     reject(`Could not format, code: ${code}, error: ${errorMessage}`);
                 } else {
-                    resolve([new TextEdit(range, stdout)]) ;
+                    resolve([new TextEdit(range, stdout)]);
                 }
             });
         }).catch((reason) => {
