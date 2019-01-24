@@ -96,13 +96,6 @@ export default class PerlLinterProvider {
     }
 
     private getRange(tokens: string[], document: TextDocument) {
-        if (this.configuration.highlightMode === "word") {
-            return document.getWordRangeAtPosition(
-                new Position(Number(tokens[1]) - 1, Number(tokens[2]) - 1),
-                /[^\s]+/,
-            )!!;
-        }
-
         return new Range(
             Number(tokens[1]) - 1,
             Number(tokens[2]) - 1,
