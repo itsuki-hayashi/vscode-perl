@@ -128,7 +128,7 @@ export class PerlLinterProvider {
         return [
             "--brutal",
             "--verbose",
-            "\"%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n\"",
+            "%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n",
             tempfilepath,
         ];
     }
