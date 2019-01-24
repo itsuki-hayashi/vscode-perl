@@ -29,12 +29,17 @@
 					"default": "perltidy",
 					"description": "The name or path to the perltidy executable that will be used when formatting code."
 				},
-				"shimple-perl.perltidyArgs": {
+				"simple-perl.perltidyArgs": {
 					"type": "array",
 					"default": [
 						"-q"
 					],
 					"description": "Arguments to perltidy as an array of strings, each element an argument including the leading dash."
+				},
+				"simple-perl.perlcritic": {
+					"type": "string",
+					"default": "perlcritic",
+					"description": "The name or path to the perlcritic executable."
 				}
 			}
 		}

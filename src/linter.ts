@@ -6,7 +6,7 @@ import { tmpdir } from "os";
 import { basename, sep } from "path";
 import {
     Diagnostic, DiagnosticCollection, DiagnosticSeverity, Disposable,
-    languages, Position, Range, TextDocument, workspace, WorkspaceConfiguration,
+    languages, Range, TextDocument, workspace, WorkspaceConfiguration,
 } from "vscode";
 
 export default class PerlLinterProvider {
@@ -15,7 +15,7 @@ export default class PerlLinterProvider {
 
     public constructor(subscriptions: Disposable[]) {
         this.diagnosticCollection = languages.createDiagnosticCollection();
-        this.configuration = workspace.getConfiguration("simple-perl.lint");
+        this.configuration = workspace.getConfiguration("simple-perl");
 
         workspace.onDidCloseTextDocument(
             (textDocument) => {
@@ -54,9 +54,8 @@ export default class PerlLinterProvider {
             ".lint";
         writeFileSync(tempfilepath, textDocument.getText());
         const proc = spawn(
-            this.configuration.exec,
+            this.configuration.perlcritic,
             this.getCommandArguments(tempfilepath),
-            this.getCommandOptions(),
         );
         proc.stdout.on("data", (data: Buffer) => {
             decodedChunks.push(data);
@@ -91,7 +90,7 @@ export default class PerlLinterProvider {
         return new Diagnostic(
             this.getRange(tokens, document),
             this.getMessage(tokens),
-            this.getSeverity(tokens),
+            DiagnosticSeverity.Error,
         );
     }
 
@@ -128,58 +127,16 @@ export default class PerlLinterProvider {
         }
     }
 
-    private getSeverity(tokens: string[]) {
-        switch (this.configuration[this.getSeverityAsText(tokens[0])]) {
-            case "hint":
-                return DiagnosticSeverity.Hint;
-            case "info":
-                return DiagnosticSeverity.Information;
-            case "warning":
-                return DiagnosticSeverity.Warning;
-            default:
-                return DiagnosticSeverity.Error;
-        }
-    }
-
     private isValidViolation(violation: string) {
         return violation.split("~|~").length === 6;
     }
 
-    private getCommandOptions() {
-        return {
-            cwd: this.configuration.path,
-            shell: true,
-        };
-    }
-
     private getCommandArguments(tempfilepath: string): string[] {
         return [
-            "--" + this.getLintSeverity(),
-            this.useProfile(),
-            this.getExcludedPolicies(),
+            "--brutal",
             "--verbose",
             "\"%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n\"",
             tempfilepath,
         ];
-    }
-
-    private getExcludedPolicies() {
-        const policies: string[] = [];
-        this.configuration.excludedPolicies.forEach((policy: string) => {
-            policies.push("--exclude");
-            policies.push(policy);
-        });
-        return policies.join(" ");
-    }
-
-    private useProfile(): string {
-        if (!this.configuration.useProfile) {
-            return "--noprofile";
-        } else {
-            return "";
-        }
-    }
-    private getLintSeverity() {
-        return this.configuration.severity;
     }
 }
