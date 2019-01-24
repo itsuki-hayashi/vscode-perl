@@ -3,7 +3,7 @@
 	"displayName": "Simple Perl",
 	"description": "Simple Perl extension supports perltidy and perlcritic.",
 	"version": "0.0.1",
-	"license": "GPL-3.0",
+	"license": "MIT",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
