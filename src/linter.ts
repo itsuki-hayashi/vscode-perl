@@ -9,25 +9,18 @@ import {
     languages, Range, TextDocument, workspace, WorkspaceConfiguration,
 } from "vscode";
 
-export default class PerlLinterProvider {
+export class PerlLinterProvider {
     private diagnosticCollection: DiagnosticCollection;
     private configuration: WorkspaceConfiguration;
 
-    public constructor(subscriptions: Disposable[]) {
+    public constructor() {
         this.diagnosticCollection = languages.createDiagnosticCollection();
         this.configuration = workspace.getConfiguration("simple-perl");
+    }
 
-        workspace.onDidCloseTextDocument(
-            (textDocument) => {
-                this.diagnosticCollection.delete(textDocument.uri);
-            },
-            null,
-            subscriptions,
-        );
-
+    public activate(subscriptions: Disposable[]): void {
         workspace.onDidOpenTextDocument(this.lint, this, subscriptions);
         workspace.onDidSaveTextDocument(this.lint, this);
-
         workspace.onDidCloseTextDocument(
             (textDocument) => {
                 this.diagnosticCollection.delete(textDocument.uri);
