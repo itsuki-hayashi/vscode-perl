@@ -57,5 +57,9 @@
 		"tslint": "~5.12.1",
 		"@types/node": "~10.12.18",
 		"@types/mocha": "~5.2.5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/edsgerlin/vscode-perl.git"
 	}
 }
