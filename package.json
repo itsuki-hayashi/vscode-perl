@@ -4,24 +4,27 @@
 	"description": "Simple Perl extension supports perltidy and perlcritic.",
 	"version": "0.0.2",
 	"license": "MIT",
+	"icon": "icon.png",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
 	"categories": [
-		"Programming Languages"
+		"Programming Languages",
+		"Formatters",
+		"Snippets",
+		"Linters"
 	],
-	"publisher": "zhiyuan-lin",
+	"keywords": ["Perl", "perltidy", "perlcritic", "linting", "linter", "formatter"],
+	"publisher": "edsgerlin",
 	"activationEvents": [
 		"onLanguage:perl"
 	],
 	"main": "./out/extension",
 	"contributes": {
-		"snippets": [
-			{
-				"language": "perl",
-				"path": "./snippets/perl.json"
-			}
-		],
+		"snippets": [{
+			"language": "perl",
+			"path": "./snippets/perl.json"
+		}],
 		"configuration": {
 			"type": "object",
 			"title": "Simple Perl configuration",
@@ -61,7 +64,6 @@
 		"@types/mocha": "~5.2.5"
 	},
 	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/edsgerlin/vscode-perl.git"
+		"url": "https://github.com/edsgerlin/vscode-perl"
 	}
 }
