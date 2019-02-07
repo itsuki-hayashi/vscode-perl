@@ -1,17 +1,32 @@
-# Simple Perl README
+# Simple Perl
 
-This extension provides code linting via Perl::Critic and code formatting via Perl::Tidy.
+## Features
+
+* Code snippets for common control structures used in Perl.
+* Code linting via `Perl::Critic`.
+* Code formatting via `Perl::Tidy`.
+
 It is a combination of [Perl extension](https://marketplace.visualstudio.com/items?itemName=henriiik.vscode-perl) by
 Henrik Sjööh and [Perl Toolbox](https://marketplace.visualstudio.com/items?itemName=d9705996.perl-toolbox) by David Walker.
 
-Just make sure you have `perlcritic` and `perltidy` are available in `$PATH`.
-Customization linter by modify yoou `.perlcritic` file, configuration in vscode is not needed.
+## Installation
+Just make sure you have `perlcritic` and `perltidy` available in `$PATH`.
+Customization `Perl::Critic` by modify your `.perlcritic` file, configuration in Visual Studio Code is not needed. Same is true for `Perl::Tidy`, it reads configuration from `.perltidyrc`.
+
+## Extension Settings
+
+| Setting                  | Default      | Description                        |
+|--------------------------|--------------|------------------------------------|
+| `simple-perl.perltidy`   | `perltidy`   | Path to `Perl::Tidy` executable.   |
+| `simple-perl.perlcritic` | `perlcritic` | Path to `Perl::Critic` executable. |
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.2
 
-### 0.0,1
+Refine README.md.
+
+### 0.0.1
 
 Initial release of Simple Perl.
 

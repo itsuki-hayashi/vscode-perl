@@ -1,7 +1,9 @@
 # Change Log
-All notable changes to the "simple-perl" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 0.0.2 2019-02-08
 
-## [Unreleased]
-- Initial release
+Refine README.md.
+
+## 0.0.1 2019-01-26
+
+Initial release of Simple Perl.
