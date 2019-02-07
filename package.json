@@ -15,7 +15,7 @@
 		"Linters"
 	],
 	"keywords": ["Perl", "perltidy", "perlcritic", "linting", "linter", "formatter"],
-	"publisher": "edsgerlin",
+	"publisher": "zhiyuan-lin",
 	"activationEvents": [
 		"onLanguage:perl"
 	],
