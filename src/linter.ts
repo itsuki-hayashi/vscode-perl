@@ -126,7 +126,6 @@ export class PerlLinterProvider {
 
     private getCommandArguments(tempfilepath: string): string[] {
         return [
-            "--brutal",
             "--verbose",
             "%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n",
             tempfilepath,
