@@ -2,7 +2,7 @@
 	"name": "simple-perl",
 	"displayName": "Simple Perl",
 	"description": "Simple Perl extension supports perltidy and perlcritic.",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"license": "MIT",
 	"icon": "icon.png",
 	"engines": {
@@ -14,17 +14,26 @@
 		"Snippets",
 		"Linters"
 	],
-	"keywords": ["Perl", "perltidy", "perlcritic", "linting", "linter", "formatter"],
+	"keywords": [
+		"Perl",
+		"perltidy",
+		"perlcritic",
+		"linting",
+		"linter",
+		"formatter"
+	],
 	"publisher": "zhiyuan-lin",
 	"activationEvents": [
 		"onLanguage:perl"
 	],
 	"main": "./out/extension",
 	"contributes": {
-		"snippets": [{
-			"language": "perl",
-			"path": "./snippets/perl.json"
-		}],
+		"snippets": [
+			{
+				"language": "perl",
+				"path": "./snippets/perl.json"
+			}
+		],
 		"configuration": {
 			"type": "object",
 			"title": "Simple Perl configuration",
@@ -57,13 +66,13 @@
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"typescript": "~3.3.1",
-		"vscode": "~1.1.29",
-		"tslint": "~5.12.1",
-		"@types/node": "~10.12.21",
-		"@types/mocha": "~5.2.5"
+		"typescript": "~3.9.6",
+		"vscode": "~1.1.37",
+		"tslint": "~6.1.2",
+		"@types/node": "~12.12.6",
+		"@types/mocha": "~7.0.2"
 	},
 	"repository": {
-		"url": "https://github.com/edsgerlin/vscode-perl"
+		"url": "https://github.com/zhiyuan-lin/vscode-perl"
 	}
 }

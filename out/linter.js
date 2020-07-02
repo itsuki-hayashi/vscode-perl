@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PerlLinterProvider = void 0;
 const child_process_1 = require("child_process");
 const fs_1 = require("fs");
 const os_1 = require("os");
@@ -84,7 +85,6 @@ class PerlLinterProvider {
     }
     getCommandArguments(tempfilepath) {
         return [
-            "--brutal",
             "--verbose",
             "%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n",
             tempfilepath,

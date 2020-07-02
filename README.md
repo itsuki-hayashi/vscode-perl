@@ -22,6 +22,12 @@ Customization `Perl::Critic` by modify your `.perlcritic` file, configuration in
 
 ## Release Notes
 
+### 0.0.3
+
+Remove hardcoded severity `brutal`.
+Update dependencies.
+Credit: [@glauschwuffel](https://github.com/glauschwuffel)  [issues](https://github.com/zhiyuan-lin/vscode-perl/issues/2)
+
 ### 0.0.2
 
 Refine README.md.
