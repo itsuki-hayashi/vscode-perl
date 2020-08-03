@@ -1,9 +1,6 @@
 "use strict";
 
 import { spawn } from "child_process";
-import { unlinkSync, writeFileSync } from "fs";
-import { tmpdir } from "os";
-import { basename, sep } from "path";
 import {
   Diagnostic,
   DiagnosticCollection,
@@ -49,12 +46,9 @@ export class PerlLinterProvider {
     }
     this.document = textDocument;
     const decodedChunks: Buffer[] = [];
-    const tempfilepath =
-      tmpdir() + sep + basename(this.document.fileName) + ".lint";
-    writeFileSync(tempfilepath, this.document.getText());
     const proc = spawn(
       this.configuration.perlcritic,
-      this.getCommandArguments(tempfilepath)
+      this.getCommandArguments()
     );
     proc.stdout.on("data", (data: Buffer) => {
       decodedChunks.push(data);
@@ -69,7 +63,6 @@ export class PerlLinterProvider {
         this.document.uri,
         this.getDiagnostics(decodedChunks.join())
       );
-      unlinkSync(tempfilepath);
     });
   }
 
@@ -143,7 +136,11 @@ export class PerlLinterProvider {
     return violation.split("~|~").length === 6;
   }
 
-  private getCommandArguments(tempfilepath: string): string[] {
-    return ["--verbose", "%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n", tempfilepath];
+  private getCommandArguments(): string[] {
+    return [
+      "--verbose",
+      "%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n",
+      this.document.fileName,
+    ];
   }
 }
