@@ -46,9 +46,11 @@ export class PerlLinterProvider {
     }
     this.document = textDocument;
     const decodedChunks: Buffer[] = [];
+    const cwd = this.getWorkspaceFolder();
     const proc = spawn(
       this.configuration.perlcritic,
-      this.getCommandArguments()
+      this.getCommandArguments(),
+      { cwd }
     );
     proc.stdout.on("data", (data: Buffer) => {
       decodedChunks.push(data);
@@ -134,6 +136,20 @@ export class PerlLinterProvider {
 
   private isValidViolation(violation: string) {
     return violation.split("~|~").length === 6;
+  }
+
+  private getWorkspaceFolder(): string | undefined {
+    if (workspace.workspaceFolders) {
+      if (this.document) {
+        const workspaceFolder = workspace.getWorkspaceFolder(this.document.uri);
+        if (workspaceFolder) {
+          return workspaceFolder.uri.fsPath;
+        }
+      }
+      return workspace.workspaceFolders[0].uri.fsPath;
+    } else {
+      return undefined;
+    }
   }
 
   private getCommandArguments(): string[] {

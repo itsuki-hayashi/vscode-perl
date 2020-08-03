@@ -2,9 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PerlLinterProvider = void 0;
 const child_process_1 = require("child_process");
-const fs_1 = require("fs");
-const os_1 = require("os");
-const path_1 = require("path");
 const vscode_1 = require("vscode");
 class PerlLinterProvider {
     constructor() {
@@ -28,9 +25,8 @@ class PerlLinterProvider {
         }
         this.document = textDocument;
         const decodedChunks = [];
-        const tempfilepath = os_1.tmpdir() + path_1.sep + path_1.basename(this.document.fileName) + ".lint";
-        fs_1.writeFileSync(tempfilepath, this.document.getText());
-        const proc = child_process_1.spawn(this.configuration.perlcritic, this.getCommandArguments(tempfilepath));
+        const cwd = this.getWorkspaceFolder();
+        const proc = child_process_1.spawn(this.configuration.perlcritic, this.getCommandArguments(), { cwd });
         proc.stdout.on("data", (data) => {
             decodedChunks.push(data);
         });
@@ -39,7 +35,6 @@ class PerlLinterProvider {
         });
         proc.stdout.on("end", () => {
             this.diagnosticCollection.set(this.document.uri, this.getDiagnostics(decodedChunks.join()));
-            fs_1.unlinkSync(tempfilepath);
         });
     }
     getDiagnostics(output) {
@@ -53,7 +48,7 @@ class PerlLinterProvider {
     }
     createDiagnostic(violation) {
         const tokens = violation.replace("~||~", "").split("~|~");
-        return new vscode_1.Diagnostic(this.getRange(tokens), this.getMessage(tokens), vscode_1.DiagnosticSeverity.Error);
+        return new vscode_1.Diagnostic(this.getRange(tokens), this.getMessage(tokens), this.getSeverity(tokens));
     }
     getRange(tokens) {
         return new vscode_1.Range(Number(tokens[1]) - 1, Number(tokens[2]) - 1, Number(tokens[1]) - 1, Number.MAX_VALUE);
@@ -78,11 +73,41 @@ class PerlLinterProvider {
                 return "brutal";
         }
     }
+    getSeverity(tokens) {
+        switch (this.configuration[this.getSeverityAsText(tokens[0])]) {
+            case "hint":
+                return vscode_1.DiagnosticSeverity.Hint;
+            case "info":
+                return vscode_1.DiagnosticSeverity.Information;
+            case "warning":
+                return vscode_1.DiagnosticSeverity.Warning;
+            default:
+                return vscode_1.DiagnosticSeverity.Error;
+        }
+    }
     isValidViolation(violation) {
         return violation.split("~|~").length === 6;
     }
-    getCommandArguments(tempfilepath) {
-        return ["--verbose", "%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n", tempfilepath];
+    getWorkspaceFolder() {
+        if (vscode_1.workspace.workspaceFolders) {
+            if (this.document) {
+                const workspaceFolder = vscode_1.workspace.getWorkspaceFolder(this.document.uri);
+                if (workspaceFolder) {
+                    return workspaceFolder.uri.fsPath;
+                }
+            }
+            return vscode_1.workspace.workspaceFolders[0].uri.fsPath;
+        }
+        else {
+            return undefined;
+        }
+    }
+    getCommandArguments() {
+        return [
+            "--verbose",
+            "%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n",
+            this.document.fileName,
+        ];
     }
 }
 exports.PerlLinterProvider = PerlLinterProvider;
