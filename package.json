@@ -1,78 +1,83 @@
 {
-	"name": "simple-perl",
-	"displayName": "Simple Perl",
-	"description": "Simple Perl extension supports perltidy and perlcritic.",
-	"version": "0.0.3",
-	"license": "MIT",
-	"icon": "icon.png",
-	"engines": {
-		"vscode": "^1.31.0"
-	},
-	"categories": [
-		"Programming Languages",
-		"Formatters",
-		"Snippets",
-		"Linters"
-	],
-	"keywords": [
-		"Perl",
-		"perltidy",
-		"perlcritic",
-		"linting",
-		"linter",
-		"formatter"
-	],
-	"publisher": "zhiyuan-lin",
-	"activationEvents": [
-		"onLanguage:perl"
-	],
-	"main": "./out/extension",
-	"contributes": {
-		"snippets": [
-			{
-				"language": "perl",
-				"path": "./snippets/perl.json"
-			}
-		],
-		"configuration": {
-			"type": "object",
-			"title": "Simple Perl configuration",
-			"properties": {
-				"simple-perl.perltidy": {
-					"type": "string",
-					"default": "perltidy",
-					"description": "The name or path to the perltidy executable that will be used when formatting code."
-				},
-				"simple-perl.perltidyArgs": {
-					"type": "array",
-					"default": [
-						"-q"
-					],
-					"description": "Arguments to perltidy as an array of strings, each element an argument including the leading dash."
-				},
-				"simple-perl.perlcritic": {
-					"type": "string",
-					"default": "perlcritic",
-					"description": "The name or path to the perlcritic executable."
-				}
-			}
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "npm run compile && node ./node_modules/vscode/bin/test"
-	},
-	"devDependencies": {
-		"typescript": "~3.9.6",
-		"vscode": "~1.1.37",
-		"tslint": "~6.1.2",
-		"@types/node": "~12.12.6",
-		"@types/mocha": "~7.0.2"
-	},
-	"repository": {
-		"url": "https://github.com/zhiyuan-lin/vscode-perl"
-	}
+  "name": "simple-perl",
+  "displayName": "Simple Perl",
+  "description": "Simple Perl extension supports perltidy and perlcritic.",
+  "version": "0.0.4",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters",
+    "Snippets",
+    "Linters"
+  ],
+  "keywords": [
+    "Perl",
+    "perltidy",
+    "perlcritic",
+    "linting",
+    "linter",
+    "formatter"
+  ],
+  "publisher": "zhiyuan-lin",
+  "activationEvents": [
+    "onLanguage:perl"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "perl",
+        "path": "./snippets/perl.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Simple Perl configuration",
+      "properties": {
+        "simple-perl.perltidy": {
+          "type": "string",
+          "default": "perltidy",
+          "description": "The name or path to the perltidy executable that will be used when formatting code.",
+          "scope": "window"
+        },
+        "simple-perl.perltidyArgs": {
+          "type": "array",
+          "default": [
+            "-q"
+          ],
+          "description": "Arguments to perltidy as an array of strings, each element an argument including the leading dash.",
+          "scope": "window"
+        },
+        "simple-perl.perlcritic": {
+          "type": "string",
+          "default": "perlcritic",
+          "description": "The name or path to the perlcritic executable.",
+          "scope": "window"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "devDependencies": {
+    "@types/mocha": "~8.0.1",
+    "@types/node": "~12.12.6",
+    "@types/vscode": "~1.47.0",
+    "@typescript-eslint/eslint-plugin": "~3.7.1",
+    "@typescript-eslint/parser": "~3.7.1",
+    "eslint": "~7.6.0",
+    "typescript": "~3.9.7",
+    "vscode-test": "~1.4.0"
+  },
+  "repository": {
+    "url": "https://github.com/zhiyuan-lin/vscode-perl"
+  }
 }
