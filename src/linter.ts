@@ -89,7 +89,7 @@ export class PerlLinterProvider {
     return new Diagnostic(
       this.getRange(tokens),
       this.getMessage(tokens),
-      DiagnosticSeverity.Error
+      this.getSeverity(tokens)
     );
   }
 
@@ -123,6 +123,19 @@ export class PerlLinterProvider {
         return "cruel";
       default:
         return "brutal";
+    }
+  }
+
+  private getSeverity(tokens: string[]) {
+    switch (this.configuration[this.getSeverityAsText(tokens[0])]) {
+      case "hint":
+        return DiagnosticSeverity.Hint;
+      case "info":
+        return DiagnosticSeverity.Information;
+      case "warning":
+        return DiagnosticSeverity.Warning;
+      default:
+        return DiagnosticSeverity.Error;
     }
   }
 
