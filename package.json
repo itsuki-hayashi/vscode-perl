@@ -41,19 +41,22 @@
         "simple-perl.perltidy": {
           "type": "string",
           "default": "perltidy",
-          "description": "The name or path to the perltidy executable that will be used when formatting code."
+          "description": "The name or path to the perltidy executable that will be used when formatting code.",
+          "scope": "window"
         },
         "simple-perl.perltidyArgs": {
           "type": "array",
           "default": [
             "-q"
           ],
-          "description": "Arguments to perltidy as an array of strings, each element an argument including the leading dash."
+          "description": "Arguments to perltidy as an array of strings, each element an argument including the leading dash.",
+          "scope": "window"
         },
         "simple-perl.perlcritic": {
           "type": "string",
           "default": "perlcritic",
-          "description": "The name or path to the perlcritic executable."
+          "description": "The name or path to the perlcritic executable.",
+          "scope": "window"
         }
       }
     }
