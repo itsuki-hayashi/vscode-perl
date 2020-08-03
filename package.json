@@ -2,7 +2,7 @@
   "name": "simple-perl",
   "displayName": "Simple Perl",
   "description": "Simple Perl extension supports perltidy and perlcritic.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "icon": "icon.png",
   "engines": {
